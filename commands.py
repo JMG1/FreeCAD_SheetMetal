@@ -3,7 +3,7 @@
 # (c) 2015 Javier Martínez García
 
 #***************************************************************************
-#*   (c) Javier Martínez García 2015s                                       *   
+#*   (c) Javier Martínez García 2015s, Ulrich Brammer                      *   
 #*                                                                         *
 #*   This program is free software; you can redistribute it and/or modify  *
 #*   it under the terms of the GNU Lesser General Public License (LGPL)    *
@@ -31,8 +31,10 @@ App = FreeCAD
 AAD = App.ActiveDocument
 
 if FreeCAD.GuiUp:
-	import FreeCADGui
-	from FreeCADGui import PySideUic as uic
+  import FreeCADGui
+  from FreeCADGui import PySideUic as uic
+  
+  SheetMetalUiPath = FreeCAD.getHomePath() + u'Mod/SheetMetal/gui/'
   
 def NewSMP():
   # A dialog window to set the sheet metal project parameters will show up
@@ -49,12 +51,12 @@ def NewSMP():
                       "SheetMetal Project Name").ProjectName = "SM_Project"
       
       #User accesible features:
-      obj.addProperty("App::PropertyFloat",
+      obj.addProperty("App::PropertyLength",
                       "SheetThickness",
                       "Project Data",
                       "Sheet thickness")
       
-      obj.addProperty("App::PropertyFloat",
+      obj.addProperty("App::PropertyLength",
                       "BendRadius",
                       "Project Data",
                       "Sheet bend radius")
@@ -77,6 +79,7 @@ def NewSMP():
       
       obj.setEditorMode("DataDictionaryB", 2 )
       obj.Proxy = self
+      ThicknessTestDialog(obj)
 
     def onChanged(self, fp, prop):
       pass
@@ -139,3 +142,27 @@ def NewSMP():
 def NewSMPDialog():
   Dialog = uic.loadUi( __dir__ + '/gui/NewSMP.ui' )
   Dialog.show()
+
+
+class ThicknessTestDialog:   
+  """testing a dialog with unit-awareness setting the thickness"""
+  def __init__(self, obj):
+    
+    self.obj = obj
+    ui=FreeCADGui.UiLoader()
+    self.form = ui.load(SheetMetalUiPath+ u"Sh_root2.ui")
+    
+    self.form.setWindowTitle('Setting the Thickness')
+    self.form.buttonBox.accepted.connect(self.printThickness)
+    self.form.buttonBox.rejected.connect(self.rejectInput)
+    self.form.inputThickness.setText(u'1,0 mm')
+    self.form.exec_()
+    # return
+
+  def printThickness(self):
+    print "Triggered: ", self.form.inputThickness.text()
+    self.obj.SheetThickness = self.form.inputThickness.text()
+  
+  def rejectInput(self):
+    print "Rejected Data: ", self.form.inputThickness.text()
+
