@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="64mm" height="64mm" viewBox="0.000000 -64.000000 64.000000 64.000000" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<g id="Face" transform="scale(1,-1)">
+<path id="Face_f0000" d="M 5.0 37.0 L 5.0 28.0 L 42.0 28.0 L 42.0 37.0 L 5.0 37.0 Z " stroke="#191919" stroke-width="0.35 px" style="stroke-width:0.35;stroke-miterlimit:4;stroke-dasharray:none;fill:#ffd138;fill-rule: evenodd "/>
+<title>Face</title>
+</g>
+<g id="Face001" transform="scale(1,-1)">
+<path id="Face001_f0000" d="M 20.0 58.0 L 20.0 46.0 L 14.0 46.0 L 23.0 37.0 L 33.0 46.0 L 26.0 46.0 L 26.0 58.0 L 20.0 58.0 Z " stroke="#191919" stroke-width="0.35 px" style="stroke-width:0.35;stroke-miterlimit:4;stroke-dasharray:none;fill:#000000;fill-rule: evenodd "/>
+<title>Face001</title>
+</g>
+<g id="Clone" transform="scale(1,-1)">
+<path id="Clone_f0000" d="M 26.0 7.0 L 26.0 19.0 L 32.0 19.0 L 23.0 28.0 L 13.0 19.0 L 20.0 19.0 L 20.0 7.0 L 26.0 7.0 Z " stroke="#191919" stroke-width="0.35 px" style="stroke-width:0.35;stroke-miterlimit:4;stroke-dasharray:none;fill:#000000;fill-rule: evenodd "/>
+<title>Clone of Face001</title>
+</g>
+</svg>
